@@ -7,7 +7,7 @@ import java.util.*
 
 interface SkillRepository : JpaRepository<Skill, Long> {
 
-    fun findAllBYIsActive(isActive: Boolean): List<Skill>
+    fun findAllByIsActive(isActive: Boolean): List<Skill>
 
     // select * from skill wherer lower(name) = lower(name) and skill_type = :type
     fun findByNameIgnoreCaseAndType(name: String, type: SkillType): Optional<Skill>

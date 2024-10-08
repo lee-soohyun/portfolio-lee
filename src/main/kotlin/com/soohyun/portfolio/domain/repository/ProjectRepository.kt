@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface ProjectRepository : JpaRepository<Project, Long> {
 
-    fun findAllBYIsActive(isActive: Boolean): List<Project>
+    fun findAllByIsActive(isActive: Boolean): List<Project>
 
 }

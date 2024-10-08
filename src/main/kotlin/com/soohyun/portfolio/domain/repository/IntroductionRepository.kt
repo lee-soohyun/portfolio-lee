@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 interface IntroductionRepository : JpaRepository<Introduction, Long> {
 
     // select * from introduction wherer is_active = isActive
-    fun findAllBYIsActive(isActive: Boolean): List<Introduction>
+    fun findAllByIsActive(isActive: Boolean): List<Introduction>
 }
