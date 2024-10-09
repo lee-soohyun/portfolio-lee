@@ -2,7 +2,7 @@ package com.soohyun.portfolio.domain.repository
 
 import com.soohyun.portfolio.domain.entity.Experience
 import com.soohyun.portfolio.domain.entity.ExperienceDetail
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -43,7 +43,7 @@ class ExperienceRepositoryTest {
         fun beforeAll() {
             println("----- 데이터 초기화 이전 조회 시작 -----")
             val beforeInitialize = experienceRepository.findAll()
-            Assertions.assertThat(beforeInitialize).hasSize(0)
+            assertThat(beforeInitialize).hasSize(0)
             println("----- 데이터 초기화 이전 조회 종료 -----")
             println("----- 테스트 데이터 초기화 시작 -----")
             val experiences = mutableListOf<Experience>()
@@ -59,10 +59,10 @@ class ExperienceRepositoryTest {
         fun testFindAll() {
             println("----- findAll 테스트 시작 -----")
             val experiences = experienceRepository.findAll()
-            Assertions.assertThat(experiences).hasSize(DATA_SIZE)
+            assertThat(experiences).hasSize(DATA_SIZE)
             println("experiences.size: ${experiences.size}")
             for (experience in experiences) {
-                Assertions.assertThat(experience.details).hasSize(experience.title.toInt())
+                assertThat(experience.details).hasSize(experience.title.toInt())
                 println("experience.details.size: ${experience.details.size}")
             }
             println("----- findAll 테스트 종료 -----")
@@ -72,10 +72,10 @@ class ExperienceRepositoryTest {
         fun testFindAllByIsActive() {
             println("----- findAllByIsActive 테스트 시작 -----")
             val experiences = experienceRepository.findAllByIsActive(true)
-            Assertions.assertThat(experiences).hasSize(DATA_SIZE)
+            assertThat(experiences).hasSize(DATA_SIZE)
             println("experiences.size: ${experiences.size}")
             for (experience in experiences) {
-                Assertions.assertThat(experience.details).hasSize(experience.title.toInt())
+                assertThat(experience.details).hasSize(experience.title.toInt())
                 println("experience.details.size: ${experience.details.size}")
             }
             println("----- findAllByIsActive 테스트 종료 -----")
