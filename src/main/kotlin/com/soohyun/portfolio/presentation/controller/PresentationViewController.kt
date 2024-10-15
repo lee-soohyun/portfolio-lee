@@ -44,5 +44,4 @@ class PresentationViewController(
 
         return "presentation/projects"
     }
-
 }

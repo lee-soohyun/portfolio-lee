@@ -15,7 +15,6 @@ class PresentationApiController(
     private val presentationService: PresentationService
 ) {
 
-
     @GetMapping("/test")
 
     fun test(): String {
