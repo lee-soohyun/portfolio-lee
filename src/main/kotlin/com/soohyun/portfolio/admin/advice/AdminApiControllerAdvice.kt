@@ -12,22 +12,24 @@ class AdminApiControllerAdvice {
 
     val log = LoggerFactory.getLogger(AdminApiControllerAdvice::class.java)
 
-    @ExceptionHandler
-    fun handleException(e: AdminException) : ResponseEntity<String>{
-        log.info(e.message, e)
 
+    @ExceptionHandler
+    fun handleException(e: AdminException): ResponseEntity<String> {
+        log.info(e.message, e)
         return ResponseEntity.status(e.httpStatus).body(e.message)
     }
+
 
     @ExceptionHandler
     fun handleException(e: MethodArgumentNotValidException): ResponseEntity<String> {
         log.info(e.message, e)
 
         val fieldError = e.bindingResult.fieldErrors[0]
-        val message = "[${fieldError.field} ${fieldError.defaultMessage}]"
+        val message = "[${fieldError.field}] ${fieldError.defaultMessage}"
 
         return ResponseEntity.badRequest().body(message)
     }
+
 
     @ExceptionHandler
     fun handleException(e: Exception): ResponseEntity<String> {
